@@ -1,5 +1,17 @@
 # Figures & tables
 
+```{r fb, echo=FALSE}
+
+library(googlesheets)
+library(tidyverse)
+
+gss <- gs_ls()
+fb <- gs_url("https://docs.google.com/spreadsheets/d/1gue-wSQcEu4nJigVZdUWsTfIIzhtxpDRdWAQiEHgKak/edit#gid=1437032568") 
+dt <- fb %>% gs_read(ws = "fb") 
+
+```
+
+
 ## Tables
 
 ```{r functions, echo=FALSE}

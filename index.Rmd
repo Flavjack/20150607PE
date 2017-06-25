@@ -47,6 +47,13 @@ library(tidyverse)
 ```
 
 
+# Authors {-}
+
+Department of Botany, Rural Federal University of Pernambuco, Brazil.
+
+**Corresponding author:** mfpompelli@gmail.com (Marcelo F. Pompelli)
+
+
 # Abstract {-}
 
 *Jatropha curcas* is a important specie to product biofuel, by the oil content in your seeds, that require less water and can survive on infertile and saline soils. For adequate establishment in the field is necessary that seed have good quality in vigor and viability. Was performed an experiment with different imbibition time from zero to twenty four hours in deionized water. Imbibed seeds were sown in aluminium containers with 1200 g of sand. The germination was recorded every day for 25 days. Seed with 1 cm radicle was considered as germinated. To determinate seed water relation were weighed 10 seeds in fresh , turgid and dry weight (104 ◦C for 24 hours). Our results show that exist decrease in germination according to a increase in seed imbibition time. The seed water content was about 8-10 % during the experiment time. After 24 hours the seeds water content were around 60% . This study suggest that *J. curcas* don’t need previously water imbibition in order to improve germination percentage in seed with a initial water moisture less than 8%.
@@ -54,10 +61,5 @@ library(tidyverse)
 **Key words:** *Jatropha curcas* — biofuel — seed water content
 
 
-## Authors 
-
-Department of Botany, Rural Federal University of Pernambuco, Brazil.
-
-**Corresponding author:** mfpompelli@gmail.com (Marcelo F. Pompelli)
 
 
