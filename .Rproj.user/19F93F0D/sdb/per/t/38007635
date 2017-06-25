@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Figures & tables\n\n## Tables\n\n```{r functions, echo=FALSE}\n\nfunct <- dplyr::data_frame(\n  \n  \"Function\" = c(\"ger_summary\", \"ger_intime\", \"fplot\", \"GerminaQuant\", \"prosopis\"),\n  \n  \"Description\"= c(\n    \n    \"Calculate ten germination indices maintaining the factors levels for analysis of variance\",\n    \"Calculates and displays cumulative germination data.\",\n    \"Function that allows to graphic the results in bar or line plot.\",\n    \"Runs the interactive application in offline mode for use on a personal computer.\",\n    \"Dataset with germination experiment in *Prosopis juliflor* seeds under under different osmotic potentials and temperatures.\")\n)\n\nknitr::kable(\n  funct,\n  booktabs = TRUE,\n  caption = \"Main functions in the GerminaR R package for seed germination variables and graphical analysis.\"\n  )\n\n```\n\n\n## Figures\n\n\n\n(ref:gerplot) Germination  experiment with *Prosopis juliflor* under different osmotic potentials and temperatures. A) Bar graph with germination percentage in a factorial analisys. B)  Line graph from cumulative germination under different osmotic potentials.\n\n\n```{r, germplot, fig.cap= '(ref:gerplot)'}\n\n# load data\n\nlibrary(GerminaR)\nlibrary(cowplot)\n\nfb <- prosopis %>% dplyr::mutate( nacl = as.factor(nacl), temp = as.factor(temp), rep = as.factor(rep))\n\n## Puntual analysis\n\n# germination analysis\n\ngsm <- ger_summary(SeedN = \"seeds\", evalName = \"D\", data = fb)\n\n# analisys of variance\n\nav <- aov(formula = GRP ~ nacl*temp + rep, data = gsm)\n\n# mean comparision test\n\nmc <- ger_testcomp(aov = av, comp = c(\"temp\", \"nacl\"), type = \"snk\")\n\n# line or bar graphics\n\ngbp <- fplot(data = mc, type = \"bar\", \n             x = \"temp\", y = \"mean\", z = \"nacl\", \n             lmt = c(0,110), brk = 10,\n             ylab = \"Germination ('%')\", \n             xlab = \"Temperature (ºC)\", \n             lgl = \"NaCl (Mpa)\", lgd = \"top\", \n             sig = \"sg\", erb = T, color = F)\n\n## Intime analysis\n\n# data frame with percentual or relative germination in time\n\ngit <- ger_intime(Factor = \"nacl\", SeedN = \"seeds\", evalName = \"D\", method = \"percentage\", data = fb)\n\n# graphic germination in time\n\nggt <- fplot(data = git, type = \"line\", \n             x = \"evaluation\", y = \"mean\", z = \"nacl\", \n             lmt = c(0,110), brk = 10,\n             ylab = \"Germination ('%')\", \n             xlab = \"Day\", \n             lgl = \"NaCl (Mpa)\", \n             lgd = \"top\", color = FALSE)\n\n\n## Plot figures\n\ngerplot <- cowplot::ggdraw(xlim = c(0, 1), ylim = c(0, 0.5))+\n  draw_plot(gbp, width = 0.5, height = 0.5, x = 0.0, y = 0.0) +\n  draw_plot(ggt, width = 0.5, height = 0.5, x = 0.5, y = 0.0) +\n  draw_plot_label(label = c(\"A\", \"B\"), x = c(0.0, 0.5), y = c(0.5, 0.5))\n\ncowplot::ggsave(\"img/gerplot.tiff\", dpi= 300, width = 210*0.9 , height = 297*0.4, units = \"mm\")\ncowplot::ggsave(\"img/gerplot.png\", dpi= 300, width = 210*0.9 , height = 297*0.4, units = \"mm\")\n\nknitr::include_graphics(\"img/gerplot.png\")\n\n```\n",
+    "created" : 1498361143764.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3833815654",
+    "id" : "38007635",
+    "lastKnownWriteTime" : 1498312274,
+    "last_content_update" : 1498312274,
+    "path" : "~/GitHub/20150607PE/code.Rmd",
+    "project_path" : "code.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

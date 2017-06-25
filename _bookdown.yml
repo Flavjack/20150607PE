@@ -1,0 +1,12 @@
+book_filename: "bookdown-doctemp"
+output_dir: docs
+rmd_files: [
+  "index.Rmd",
+  "intro.Rmd",
+  "MM.Rmd", 
+  "Result.Rmd",
+  "Discussion.Rmd",
+  "conclusion.Rmd",
+  "code.Rmd",
+  "ref.Rmd"
+  ]
