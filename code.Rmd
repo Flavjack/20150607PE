@@ -1,6 +1,6 @@
 # Figures & tables
 
-```{r fb, echo=FALSE}
+```{r fb, include=FALSE, echo=FALSE}
 
 library(googlesheets)
 library(tidyverse)
@@ -15,10 +15,10 @@ str(dt)
 
 ## Figures
 
-(ref:gerplot) . Response of *Jatropha curcas* seeds after different imbition time. (A) pH and Electrical Conductivity (EC). (B) Seed Moisture (SMT) and Seed Water Content (SWC). Means are represent with (±SE) of four replicates.
+(ref:swr) . Response of *Jatropha curcas* seeds after different imbition time. (A) Electrical Conductivity; (B) pH; (C) Seed Moisture and  (D) Seed Water Content. Means are represent with (±SE). n = 4.
 
 
-```{r, germplot, fig.cap= '(ref:gerplot)'}
+```{r, swr, fig.cap= '(ref:swr)'}
 
 av <- aov(HPT ~ IBTH, dt)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
@@ -28,7 +28,7 @@ pH_plot <- GerminaR::fplot(data = mc, type = "line",
                            y = "mean", ylab = "pH",
                            z = "IBTH", lgd = "none", 
                            erb = T, sig = "sg", 
-                           lmt = c(5,8), brk = 0.5, 
+                           lmt = c(5,8.4), brk = 0.5, 
                            color = F)  + 
   geom_line(aes(group=1))  +
   geom_point(shape = 1, colour = "black", fill = "white", size = 1, stroke = 0.5)+
@@ -64,7 +64,7 @@ smt_plot <- GerminaR::fplot(data = mc, type = "line",
                            y = "mean", ylab = "Seed moisture ('%')",
                            z = "IBTH", lgd = "none", 
                            erb = T, sig = "sg", 
-                           lmt = c(7,10), brk = 0.5, 
+                           lmt = c(7,9.9), brk = 0.5, 
                            color = F)+ 
   geom_line(aes(group=1))  +
   geom_point(shape = 1, colour = "black", fill = "white", size = 1, stroke = 0.5)+
@@ -82,7 +82,7 @@ swc_plot <- GerminaR::fplot(data = mc, type = "line",
                            y = "mean", ylab = "Seed moisture ('%')",
                            z = "IBTH", lgd = "none", 
                            erb = T, sig = "sg", 
-                           lmt = c(0,70), brk = 10, 
+                           lmt = c(0,69), brk = 10, 
                            color = F)+ 
   geom_line(aes(group=1))  +
   geom_point(shape = 1, colour = "black", fill = "white", size = 1, stroke = 0.5)
@@ -90,20 +90,20 @@ swc_plot <- GerminaR::fplot(data = mc, type = "line",
 
 ## Plot figures
 
-swr <- ggdraw(xlim = c(0, 0.55), ylim = c(0, 1))+
-          draw_plot(ce_plot,  width = 0.5, height = 0.25, x = 0.0, y = 0.75) +
-          draw_plot(pH_plot,  width = 0.5, height = 0.25, x = 0.0, y = 0.50) +
-          draw_plot(smt_plot, width = 0.5, height = 0.25, x = 0.0, y = 0.25) +
-          draw_plot(swc_plot, width = 0.5, height = 0.25, x = 0.0, y = 0.0) +
+swr <- ggdraw(xlim = c(0, 0.55), ylim = c(0, 0.95))+
+          draw_plot(ce_plot,  width = 0.4947, height = 0.25, x = 0.005, y = 0.695) +
+          draw_plot(pH_plot,  width = 0.4894, height = 0.25, x = 0.011, y = 0.464) +
+          draw_plot(smt_plot, width = 0.492, height = 0.25, x = 0.008, y = 0.232) +
+          draw_plot(swc_plot, width = 0.488, height = 0.25, x = 0.012, y = 0.0) +
           draw_plot_label(
             label = c("A", "B", "C", "D"), 
             x = c(0.5, 0.5, 0.5, 0.5), 
-            y = c(0.2, 0.45, 0.7, 0.90))
+            y = c(0.25, 0.48, 0.71, 0.939))
 
 
 cowplot::ggsave("img/swr.png", dpi= 300, width = 210*0.45 , height = 297*0.9, units = "mm")
 
-knitr::include_graphics("img/gerplot.png")
+knitr::include_graphics("img/swr.png")
 
 ```
 
