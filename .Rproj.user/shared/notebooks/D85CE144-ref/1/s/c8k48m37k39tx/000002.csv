@@ -1,0 +1,2 @@
+"0","knitr::write_bib(c("
+"0","  .packages(), 'shiny', 'agricolae', 'ggplot2', 'bookdown', 'knitr', 'rmarkdown', 'DT', 'GerminaR', 'FactoMineR'), 'packages.bib')"

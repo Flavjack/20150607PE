@@ -1,13 +1,13 @@
 # Results
 
-## pH and Electrical Conductivity
+## Electrical conductivity and pH
 
 The water solution from the imbibition show variation under the imbibiton time line (Figure 1) while there is a increase in the EC occur a decrease in pH. The pH range have a variation from 7.7 to 6.75 (CV = 1.73) and show a difference between the imbibition time (Fv = 33.17). The EC (CV = 8.66) show difference according to the experiment time line (Fv = 43.23) with value ranges 0.15 to 0.69 ds:m−1. There is a weak correlation (r = −0.47∗) between both variables but the EC have a strong correlation with the imbition time (r = 0.84∗∗∗),seed germination (r = −0.90∗∗∗), seed water moisture (r = 0,84∗∗∗) and seed water content (r = 0,90∗∗)∗.
 
-## Seed moisture and water content
+## Seed water relation
 
 The moisture in the seeds at the beginning of the experiment is around 8% and during the experiment time line it arrive around 10% (CV = 2,99). After a two hour of imbibition the seed has around 25% show a difference from the initial seed moisture (13%), afterwards these moment the water content in the seeds increase continuously to arrive around 60% in 24 hours (Figure 1). These increase in the water contest means around 6.5 times the initial moisture value.
 
-## Seed Germination variables
+## Seed germination analisys
 
 Germination percentage have a significant decrease according to the imbibition time (Fv = 3.94) perceived since the 2 to 24 hours from initial imbibition with a value of 85% for 00 hour soaked to a range between 69-44% for 02 to 24 hour soaked (Figure 2). Germination Percentage present a strong negative correlation with Imbibition time (r = −0.72∗∗∗). Seed mean germination time in seed without imbibiton treatment has a major value with around 4.8 day in comparative with the other treatment with values around 5.81 to 7.00 day for these variable. Seed Germination Percentage negative strong correlation (r = −0.88∗∗∗) with a mean germination time
