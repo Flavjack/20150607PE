@@ -15,7 +15,7 @@ str(dt)
 
 ## Figures
 
-(ref:swr) Response of *Jatropha curcas* seeds after different imbition time. (A) Electrical Conductivity; (B) pH; (C) Seed Moisture and  (D) Seed Water Content. The letter represent the mean difference with Student Newman-Keuls-test (p ≤ 0.05). Means are represent with (±SE). n = 4.
+(ref:swr) Response of *Jatropha curcas* seeds after different imbition time. (A) Electrical conductivity; (B) pH; (C) Seed moisture and  (D) Seed water content. The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4.
 
 
 ```{r swr, fig.cap= '(ref:swr)', echo=FALSE}
@@ -108,7 +108,7 @@ knitr::include_graphics("img/swr.png")
 ```
 
 
-(ref:grm) (A) Germination (%); (B) mean germination time (days); (C) Germination synchrony and (D) Germination uncertany (bits) in *Jatropha curcas* seeds after different imbition times. The letter represent the mean difference with Student Newman-Keuls-test (p ≤ 0.05). Means are represent with (±SE). n = 4.
+(ref:grm) (A) Germination (%); (B) Mean germination time (days); (C) Germination synchrony and (D) Germination uncertany (bits) in *Jatropha curcas* seeds after different imbition times. The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4.
 
 ```{r swrgrm, echo=FALSE, fig.cap='(ref:grm)'}
 
@@ -119,7 +119,8 @@ gdt <- dt %>%
   dplyr::filter(SS == "S1") %>% 
   mutate_all(funs(replace(., is.na(.), 0)))
 
-grd <- GerminaR::ger_summary(SeedN = "SNum", evalName = "SGR.", data = gdt)
+grd <- GerminaR::ger_summary(SeedN = "SNum", evalName = "SGR.", data = gdt) %>% 
+  select(IBTH, SNum, GRP, MGT, UNC, SYN )
 
 av <- aov(GRP ~ IBTH, grd)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
@@ -195,4 +196,46 @@ knitr::include_graphics("img/grv.png")
 
 
 ```
+
+(ref:cor) Pearson correlation (p < 0.05) matrix in *Jatropha curcas* seeds after different imbition times. Where: IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; pH, potential of hydrogen; EC, electrical conducntivity; SWC, seed water content; SMT, seed moisture.
+
+```{r correlation, echo=FALSE, fig.cap='(ref:cor)'}
+
+grc <- grd %>% 
+  group_by(IBTH) %>% 
+  summarise(
+    
+    GRP = mean(GRP, na.rm = TRUE),
+    MGT = mean(MGT, na.rm = TRUE),
+    UNC = mean(UNC, na.rm = TRUE),
+    SYN = mean(SYN, na.rm = TRUE)
+    
+  )
+
+wvr <- dt %>% 
+  select(SS, IBTH, HPT, ELC, SWC.DW, SWC.FW, SWC.TW, SWC, SMT, SCH) %>% 
+  group_by(IBTH) %>% 
+  summarise(
+
+    pH = mean(HPT, na.rm = TRUE),
+    EC = mean(ELC, na.rm = TRUE),
+    SWC = mean(SWC, na.rm = TRUE),
+    SMT = mean(SMT, na.rm = TRUE)
+    
+  ) 
+
+cmt <- full_join(grc, wvr) %>% mutate(IBTH = as.numeric(IBTH))
+
+ppi <- 300
+png("img/correlation.png", width=8*ppi, height=8*ppi, res=ppi)
+
+fieldbook::plot_correlation(cmt,method = "pearson")
+
+graphics.off()
+
+knitr::include_graphics("img/correlation.png")
+
+```
+
+
 

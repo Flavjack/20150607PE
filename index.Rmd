@@ -49,7 +49,7 @@ library(tidyverse)
 
 # Authors {-}
 
-Department of Botany, Rural Federal University of Pernambuco, Brazil.
+1. Department of Botany, Rural Federal University of Pernambuco, Brazil.
 
 **Corresponding author:** mfpompelli@gmail.com (Marcelo F. Pompelli)
 
