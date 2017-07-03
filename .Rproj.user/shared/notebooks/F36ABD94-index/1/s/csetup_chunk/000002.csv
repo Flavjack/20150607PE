@@ -3,43 +3,14 @@
 "0","	message = FALSE,"
 "0","	warning = FALSE"
 "0",")"
-"2","Warning message:
-"
-"2","In readLines(input, encoding = ""UTF-8"") :"
-"2","
- "
-"2"," incomplete final line found on 'C:/Users/Asus/Documents/GitHub/20150607PE/_output.yml'
-"
 "0","options(digits = 2)"
 "0","library(agricolae)"
 "0","library(GerminaR)"
 "0","library(gsheet)"
 "0","library(knitr)"
 "0","library(cowplot)"
-"2","Loading required package: ggplot2
-"
-"2","
-Attaching package: ‘cowplot’
-
-"
-"2","The following object is masked from ‘package:ggplot2’:
-
-    ggsave
-
-"
+"0","library(corrplot)"
 "0","library(png)"
 "0","library(jpeg)"
 "0","library(citr)"
 "0","library(tidyverse)"
-"2","Loading tidyverse: tibble
-Loading tidyverse: tidyr
-Loading tidyverse: readr
-Loading tidyverse: purrr
-Loading tidyverse: dplyr
-"
-"2","Conflicts with tidy packages --------------------------------------------------------------
-"
-"2","filter(): dplyr, stats
-ggsave(): ggplot2, cowplot
-lag():    dplyr, stats
-"

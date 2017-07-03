@@ -2,11 +2,24 @@
 
 ## Electrical conductivity and pH
 
-The water solution from the imbibition show variation under the imbibiton time line (Figure 1) while there is a increase in the EC occur a decrease in pH. The pH range have a variation from 7.7 to 6.75 (CV = 1.73) and show a difference between the imbibition time (Fv = 33.17). The EC (CV = 8.66) show difference according to the experiment time line (Fv = 43.23) with value ranges 0.15 to 0.69 ds:m−1. There is a weak correlation (r = −0.47∗) between both variables but the EC have a strong correlation with the imbition time (r = 0.84∗∗∗),seed germination (r = −0.90∗∗∗), seed water moisture (r = 0,84∗∗∗) and seed water content (r = 0,90∗∗)∗.
+
+The water solution from the soaked seeds show variation under the imbibiton time  for electrical conductivity (EC) and pH, Figure\@ref(fig:swr A-B). The EC show a increase in relation to imbibition time (r = 0.80, p<0.05) with value ranges 0.15 to 0.69 ds.m^−1^, Figure \@ref(fig:swr A). While for pH  range had a variation from 7.7 to 6.75 showing difference between the imbibition time with a reduction of the pH in the time (r = -0.85, p<0.05), Figure \@ref(fig:swr B). Exits a negative correlation (r = -0.68, p<0.05) between EC and pH.
+
+
+
+
+<!--  but the EC have a strong correlation with the imbition time (r = 0.84∗∗∗),seed germination (r = −0.90∗∗∗), seed water moisture (r = 0,84∗∗∗) and seed water content (r = 0,90∗∗)∗. -->
+
 
 ## Seed water relation
 
-The moisture in the seeds at the beginning of the experiment is around 8% and during the experiment time line it arrive around 10% (CV = 2,99). After a two hour of imbibition the seed has around 25% show a difference from the initial seed moisture (13%), afterwards these moment the water content in the seeds increase continuously to arrive around 60% in 24 hours (Figure 1). These increase in the water contest means around 6.5 times the initial moisture value.
+The initial seed moisture is around 8% and during the experiment time line it arrive around 10%.
+
+After a two hour of imbibition the seed had around 25% show a difference from the initial seed moisture (13%), afterwards these moment the water content in the seeds increase continuously to arrive around 60% in 24 hours (Figure 1). 
+
+
+These increase in the water contest means around 6.5 times the initial moisture value.
+
 
 ## Seed germination analisys
 
