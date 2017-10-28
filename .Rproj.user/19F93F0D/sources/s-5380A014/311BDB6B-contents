@@ -1,0 +1,20 @@
+# Materials and methods
+
+## Plant material
+
+The experiment was carried out with commercial seeds (Commun Variety, BRSEEDS , Brazil). The  seeds presented 72% viability and they were collected in 2013 and stored around 9% humidity with any pesticide treatment. 
+
+##  Seed imbibiton test and water relation
+
+The seeds was distributed in 52 cups (400 ml) with 25 seed in controled room at 25 °C. For each cup was applied 100 ml deionized water according to the imbibition treatment (0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22 and 24 hours). The pH (W3B, Bel Engineering , Italy) and electrical conductivity (CD-4306, Lutron, Taiwan) for each treatment were evaluated both measurements were made with 20 ml of soaking solution. For seed water content 52 cups (100 ml) was applied 50 ml deionized water and were added 10 seed previously weight in a analytic scale (ATY224, Shimadzu, Japan) according to different imbibition time. After each treatment was take the seeds imbibition weight and putted in papers bags for oven (104 ◦C for 24 hours) for determinate seeds dry weight.The water relation variables were calculated according the following formulas: $SMT(\%) = 1 - (S_{dw}/S_{fw})*100$ and $SWC(\%) = (S_{tw} - S_{fw})/S_{fw} *100$. Where $SMT(\%)$, Seed moisture; $SWC(\%)$ Seed Water content; $S_{dw} (g)$, Seed dry weight; $S_{fw} (g)$, Seed fresh weight and $S_{tw} (g)$, Seed turgid weight.
+
+
+## Germination test
+
+The 25 seed from each treatment was sowing in aluminium trays content 1000 g of river sand at field capacity (1300 g). The seed was distributed in the tray and covered with 200 g sand. The germination experiment was carried out in greenhouse condition with 27.48 ◦C mean temperature and 78.05% relative humidity. Seed germination was evaluated daily according to agronomic criteria consider germinated seed when the radicle had emerged about 1 cm above the surface of sowing media. When no germination was observed in all treatments at least in five consecutive days, the germination was considered completed [@Moncaleano2013Germination].
+
+
+## Data analysis
+
+The experimental was carried out in a completely randomized design with 13 treatments of imbibition times (0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22 and 24 hours) and four replications. The germination variables was calculated according the R package GerminaR [@R-GerminaR]. The data were subjected to analysis of variance (ANOVA) and means were compared by the Student-Newman-Keuls test (p < 0.05) [@R-agricolae] when significance was detected. The variables were subjected a Pearson Correlation Analysis [@R-agricolae; @R-FactoMineR]. The graphics were design under R statistical software [@R-base; @R-ggplot2].  
+

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1498361134058.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2985185967",
+    "id" : "64738831",
+    "lastKnownWriteTime" : 1498858796,
+    "last_content_update" : 1498858796784,
+    "path" : "~/GitHub/20150607PE/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+        "last_setup_crc32" : ""
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
