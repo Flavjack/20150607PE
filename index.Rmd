@@ -47,7 +47,6 @@ library(tidyverse)
 
 ```
 
-
 # Authors {-}
 
 1. Department of Botany, Rural Federal University of Pernambuco, Brazil.

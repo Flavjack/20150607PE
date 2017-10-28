@@ -5,34 +5,39 @@
 library(googlesheets)
 library(tidyverse)
 library(cowplot)
+library(GerminaR)
+library(FactoMineR)
 
 gss <- gs_ls()
 fb <- gs_url("https://docs.google.com/spreadsheets/d/1gue-wSQcEu4nJigVZdUWsTfIIzhtxpDRdWAQiEHgKak/edit#gid=1437032568") 
-dt <- fb %>% gs_read(ws = "fb") %>% dplyr::mutate(IBTH = factor(IBTH))
-str(dt)
+
+var <- fb %>% gs_read(ws = "fb") %>% 
+  select(Block, IBTH, HPT, ELC, SFW = SWC.FW,	STW = SWC.TW, SDW = SWC.DW) %>% 
+  dplyr::mutate(IBTH = factor(IBTH)) %>% 
+  drop_na() %>% 
+  mutate(
+    SMT = (1 - (SDW/SFW))*100,
+    SWC = ((STW-SFW)/SFW)*100
+  )
 
 
-cor <- dt %>%
-  select(SS, IBTH, HPT, ELC) %>%
-  filter(SS == "S1" & IBTH != "0") %>% mutate(IBTH = as.numeric(IBTH))
-
-agricolae::correlation(cor[,2:4])
-
-
+grm <- fb %>% gs_read(ws = "fb") %>% 
+  filter(SS == "S1") %>% 
+  select(Block, IBTH,SNum, SGR.0:SGR.25) %>% 
+  dplyr::mutate(IBTH = factor(IBTH)) %>%
+  mutate_all(funs(replace(., is.na(.), 0)))
+  
 ```
 
 
 ## Figures
 
-(ref:swr) Response of *Jatropha curcas* seeds after different imbition time. (A) Electrical conductivity; (B) pH; (C) Seed moisture and  (D) Seed water content. The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4.
+```{r swr, fig.cap= "Response of *Jatropha curcas* seeds after different imbition time. (A) Electrical conductivity; (B) pH; (C) Seed moisture and  (D) Seed water content. The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4."}
 
-
-```{r swr, fig.cap= '(ref:swr)', echo=FALSE}
-
-av <- aov(HPT ~ IBTH, dt)
+av <- aov(HPT ~ IBTH, var)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
 
-pH_plot <- GerminaR::fplot(data = mc, type = "line",
+plot1 <- GerminaR::fplot(data = mc, type = "line",
                            x = "IBTH", xlab = "",
                            y = "mean", ylab = "pH",
                            z = "IBTH", lgd = "none", 
@@ -41,52 +46,49 @@ pH_plot <- GerminaR::fplot(data = mc, type = "line",
                            color = F)  + 
   geom_line(aes(group=1))  +
   geom_point(shape = 1, colour = "black", fill = "white", size = 1, stroke = 0.5)+
-  
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
 
 
-
-
-av <- aov(ELC ~ IBTH, dt)
+av <- aov(ELC ~ IBTH, var)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
-ce_plot <- GerminaR::fplot(data = mc, type = "line",
+
+plot2 <- GerminaR::fplot(data = mc, type = "line",
                            x = "IBTH", xlab = "",
                            y = "mean", ylab = "Electrical conductivity (dS.m^{-1})",
                            z = "IBTH", lgd = "none", 
                            erb = T, sig = "sg", 
-                           lmt = c(0,0.8),
+                           lmt = c(0,0.85), 
                            color = F)  + 
   geom_line(aes(group=1))  +
   geom_point(shape = 1, colour = "black", fill = "white", size = 1, stroke = 0.5)+
-  
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
 
 
-av <- aov(SMT ~ IBTH, dt)
+av <- aov(SMT ~ IBTH, var)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
-smt_plot <- GerminaR::fplot(data = mc, type = "line",
+
+plot3 <- GerminaR::fplot(data = mc, type = "line",
                            x = "IBTH", xlab = "",
                            y = "mean", ylab = "Seed moisture ('%')",
                            z = "IBTH", lgd = "none", 
                            erb = T, sig = "sg", 
-                           lmt = c(7,9.9), brk = 0.5, 
+                           lmt = c(7.5,9.9), brk = 0.5, 
                            color = F)+ 
   geom_line(aes(group=1))  +
   geom_point(shape = 1, colour = "black", fill = "white", size = 1, stroke = 0.5)+
-  
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
 
                       
-
-av <- aov(SWC ~ IBTH, dt)
+av <- aov(SWC ~ IBTH, var)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
-swc_plot <- GerminaR::fplot(data = mc, type = "line",
+
+plot4 <- GerminaR::fplot(data = mc, type = "line",
                            x = "IBTH", xlab = "Imbibition time (hours)",
                            y = "mean", ylab = "Seed water content ('%')",
                            z = "IBTH", lgd = "none", 
@@ -100,15 +102,14 @@ swc_plot <- GerminaR::fplot(data = mc, type = "line",
 ## Plot figures
 
 swr <- ggdraw(xlim = c(0, 0.55), ylim = c(0, 0.95))+
-          draw_plot(ce_plot,  width = 0.4947, height = 0.25, x = 0.005, y = 0.695) +
-          draw_plot(pH_plot,  width = 0.4894, height = 0.25, x = 0.011, y = 0.464) +
-          draw_plot(smt_plot, width = 0.492, height = 0.25, x = 0.008, y = 0.232) +
-          draw_plot(swc_plot, width = 0.488, height = 0.25, x = 0.012, y = 0.0) +
+          draw_plot(plot1,  width = 0.488, height = 0.25, x = 0.012, y = 0.696) +
+          draw_plot(plot2,  width = 0.4947, height = 0.25, x = 0.005, y = 0.464) +
+          draw_plot(plot3, width = 0.492, height = 0.25, x = 0.008, y = 0.232) +
+          draw_plot(plot4, width = 0.488, height = 0.25, x = 0.012, y = 0.0) +
           draw_plot_label(
             label = c("D", "C", "B", "A"), 
             x = c(0.5, 0.5, 0.5, 0.5), 
             y = c(0.25, 0.48, 0.71, 0.939))
-
 
 cowplot::ggsave("img/fig_01.png", dpi= 300, width = 210*0.45 , height = 297*0.9, units = "mm")
 
@@ -117,23 +118,16 @@ knitr::include_graphics("img/fig_01.png")
 ```
 
 
-(ref:grm) (A) Germination (%); (B) Mean germination time (days); (C) Germination synchrony and (D) Germination uncertany (bits) in *Jatropha curcas* seeds after different imbition times. The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4.
 
-```{r swrgrm, echo=FALSE, fig.cap='(ref:grm)'}
+```{r swrgrm, fig.cap='(A) Germination (%); (B) Mean germination time (days); (C) Germination synchrony and (D) Germination uncertany (bits) in *Jatropha curcas* seeds after different imbition times. The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4.'}
 
-library(GerminaR)
-
-gdt <- dt %>% 
-  dplyr::select(SS, IBTH, SNum, SGR.0:SGR.25) %>% 
-  dplyr::filter(SS == "S1") %>% 
-  mutate_all(funs(replace(., is.na(.), 0)))
-
-grd <- GerminaR::ger_summary(SeedN = "SNum", evalName = "SGR.", data = gdt) %>% 
+grd <- GerminaR::ger_summary(SeedN = "SNum", evalName = "SGR.", data = grm) %>% 
   select(IBTH, SNum, GRP, MGT, UNC, SYN )
 
 av <- aov(GRP ~ IBTH, grd)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
-grp_plot <- GerminaR::fplot(data = mc, type = "bar",
+
+plot1 <- GerminaR::fplot(data = mc, type = "bar",
                            x = "IBTH", xlab = "",
                            y = "mean", ylab = "Germination ('%')",
                            z = "IBTH", lgd = "none", 
@@ -148,7 +142,8 @@ grp_plot <- GerminaR::fplot(data = mc, type = "bar",
 
 av <- aov(MGT ~ IBTH, grd)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
-mgt_plot <- GerminaR::fplot(data = mc, type = "bar",
+
+plot2 <- GerminaR::fplot(data = mc, type = "bar",
                            x = "IBTH", xlab = "",
                            y = "mean", ylab = "Mean germination time (days)",
                            z = "IBTH", lgd = "none", 
@@ -163,7 +158,7 @@ mgt_plot <- GerminaR::fplot(data = mc, type = "bar",
 
 av <- aov(SYN ~ IBTH, grd)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
-syn_plot <- GerminaR::fplot(data = mc, type = "bar",
+plot3 <- GerminaR::fplot(data = mc, type = "bar",
                            x = "IBTH", xlab = "",
                            y = "mean", ylab = "Germination synchrony",
                            z = "IBTH", lgd = "none", 
@@ -178,7 +173,7 @@ syn_plot <- GerminaR::fplot(data = mc, type = "bar",
 
 av <- aov(UNC ~ IBTH, grd)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
-unc_plot <- GerminaR::fplot(data = mc, type = "bar",
+plot4 <- GerminaR::fplot(data = mc, type = "bar",
                            x = "IBTH", xlab = "",
                            y = "mean", ylab = "Germination uncertany (bits)",
                            z = "IBTH", lgd = "none", 
@@ -189,10 +184,10 @@ unc_plot <- GerminaR::fplot(data = mc, type = "bar",
 ## Plot figures
 
 grv <- ggdraw(xlim = c(0, 0.55), ylim = c(0, 0.95))+
-          draw_plot(grp_plot,  width = 0.505, height = 0.25, x = -0.005, y = 0.697) +
-          draw_plot(mgt_plot,  width = 0.49, height = 0.25, x = 0.01, y = 0.464) +
-          draw_plot(syn_plot, width = 0.5, height = 0.25, x = 0.0, y = 0.232) +
-          draw_plot(unc_plot, width = 0.503, height = 0.25, x = -0.003, y = 0.0) +
+          draw_plot(plot1,  width = 0.505, height = 0.25, x = -0.005, y = 0.697) +
+          draw_plot(plot2,  width = 0.49, height = 0.25, x = 0.01, y = 0.464) +
+          draw_plot(plot3, width = 0.5, height = 0.25, x = 0.0, y = 0.232) +
+          draw_plot(plot4, width = 0.503, height = 0.25, x = -0.003, y = 0.0) +
           draw_plot_label(
             label = c("D", "C", "B", "A"), 
             x = c(0.5, 0.5, 0.5, 0.5), 
@@ -206,32 +201,18 @@ knitr::include_graphics("img/fig_02.png")
 
 ```
 
-(ref:cor) Pearson correlation (p < 0.05) matrix in *Jatropha curcas* seeds after different imbition times. Where: IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; pH, potential of hydrogen; EC, electrical conducntivity; SWC, seed water content; SMT, seed moisture.
 
-```{r correlation, echo=FALSE, fig.cap='(ref:cor)'}
+```{r correlation, echo=FALSE, fig.cap='Pearson correlation (p < 0.05) matrix in *Jatropha curcas* seeds after different imbition times. Where: IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; pH, potential of hydrogen; EC, electrical conducntivity; SWC, seed water content; SMT, seed moisture.'}
 
-grc <- grd %>% 
+grc <- grd %>% select(-SNum) %>% 
   group_by(IBTH) %>% 
-  summarise(
-    
-    GRP = mean(GRP, na.rm = TRUE),
-    MGT = mean(MGT, na.rm = TRUE),
-    UNC = mean(UNC, na.rm = TRUE),
-    SYN = mean(SYN, na.rm = TRUE)
-    
-  )
+  summarise_all(funs(mean), na.rm = TRUE)
 
-wvr <- dt %>% 
-  select(SS, IBTH, HPT, ELC, SWC.DW, SWC.FW, SWC.TW, SWC, SMT, SCH) %>% 
+
+wvr <- var %>% select(-Block) %>% 
   group_by(IBTH) %>% 
-  summarise(
+  summarise_all(funs(mean), na.rm = TRUE)
 
-    pH = mean(HPT, na.rm = TRUE),
-    EC = mean(ELC, na.rm = TRUE),
-    SWC = mean(SWC, na.rm = TRUE),
-    SMT = mean(SMT, na.rm = TRUE)
-    
-  ) 
 
 cmt <- full_join(grc, wvr) %>% mutate(IBTH = as.numeric(IBTH))
 
@@ -246,14 +227,22 @@ knitr::include_graphics("img/fig_03.png")
 
 ```
 
-```{r pca, eval=FALSE}
+```{r pca, fig.cap= "Principal Component Analysis from the variables in *Jatropha curcas* seeds after different imbition times. Where: IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; pH, potential of hydrogen; EC, electrical conducntivity; SWC, seed water content; SMT, seed moisture."}
+
+pca <- PCA(cmt, graph = F, scale.unit = TRUE, quanti.sup = 1)
 
 ppi <- 300
 png("img/fig_04.png", width=8*ppi, height=8*ppi, res=ppi)
 
-fieldbook::plot_PCA(cmt, type = "biplot")
+# fieldbook::plot_PCA(cmt, type = "biplot")
+
+plot.PCA(pca,choix="var",
+         title="Principal Component Analisys",
+         autoLab = "y", cex = 0.8, shadowtext = T)
 
 graphics.off()
+
+knitr::include_graphics("img/fig_04.png")
 
 ```
 

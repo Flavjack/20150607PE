@@ -6,8 +6,6 @@
 The water solution from the soaked seeds show variation under the imbibiton time  for electrical conductivity (EC) and pH, Figure\@ref(fig:swr A-B). The EC show a increase in relation to imbibition time (r = 0.80, p<0.05) with value ranges 0.15 to 0.69 ds.m^−1^, Figure \@ref(fig:swr A). While for pH  range had a variation from 7.7 to 6.75 showing difference between the imbibition time with a reduction of the pH in the time (r = -0.85, p<0.05), Figure \@ref(fig:swr B). Exits a negative correlation (r = -0.68, p<0.05) between EC and pH.
 
 
-
-
 <!--  but the EC have a strong correlation with the imbition time (r = 0.84∗∗∗),seed germination (r = −0.90∗∗∗), seed water moisture (r = 0,84∗∗∗) and seed water content (r = 0,90∗∗)∗. -->
 
 
