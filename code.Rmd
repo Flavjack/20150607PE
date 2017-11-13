@@ -37,6 +37,9 @@ grm <- fb %>% gs_read(ws = "fb") %>%
 av <- aov(HPT ~ IBTH, var)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
 
+# summary(av)
+# mc %>% arrange(sg)
+
 plot1 <- GerminaR::fplot(data = mc, type = "line",
                            x = "IBTH", xlab = "",
                            y = "mean", ylab = "pH",
@@ -53,6 +56,9 @@ plot1 <- GerminaR::fplot(data = mc, type = "line",
 
 av <- aov(ELC ~ IBTH, var)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
+
+# summary(av)
+# mc %>% arrange(sg)
 
 plot2 <- GerminaR::fplot(data = mc, type = "line",
                            x = "IBTH", xlab = "",
@@ -84,7 +90,9 @@ plot3 <- GerminaR::fplot(data = mc, type = "line",
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
 
-                      
+# summary(av)
+# mc %>% arrange(sg)
+
 av <- aov(SWC ~ IBTH, var)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
 
@@ -98,14 +106,16 @@ plot4 <- GerminaR::fplot(data = mc, type = "line",
   geom_line(aes(group=1))  +
   geom_point(shape = 1, colour = "black", fill = "white", size = 1, stroke = 0.5)
 
+# summary(av)
+# mc %>% arrange(sg)
 
 ## Plot figures
 
 swr <- ggdraw(xlim = c(0, 0.55), ylim = c(0, 0.95))+
-          draw_plot(plot1,  width = 0.488, height = 0.25, x = 0.012, y = 0.696) +
-          draw_plot(plot2,  width = 0.4947, height = 0.25, x = 0.005, y = 0.464) +
-          draw_plot(plot3, width = 0.492, height = 0.25, x = 0.008, y = 0.232) +
-          draw_plot(plot4, width = 0.488, height = 0.25, x = 0.012, y = 0.0) +
+  draw_plot(plot2,  width = 0.4947, height = 0.25, x = 0.005, y = 0.464) +
+  draw_plot(plot1,  width = 0.488, height = 0.25, x = 0.012, y = 0.696 ) +
+  draw_plot(plot3, width = 0.492, height = 0.25, x = 0.008, y = 0.232) +
+  draw_plot(plot4, width = 0.488, height = 0.25, x = 0.012, y = 0.0) +
           draw_plot_label(
             label = c("D", "C", "B", "A"), 
             x = c(0.5, 0.5, 0.5, 0.5), 
@@ -119,7 +129,7 @@ knitr::include_graphics("img/fig_01.png")
 
 
 
-```{r swrgrm, fig.cap='(A) Germination (%); (B) Mean germination time (days); (C) Germination synchrony and (D) Germination uncertany (bits) in *Jatropha curcas* seeds after different imbition times. The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4.'}
+```{r grm, fig.cap='(A) Germination (%); (B) Mean germination time (days); (C) Germination synchrony and (D) Germination uncertany (bits) in *Jatropha curcas* seeds after different imbition times. The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4.'}
 
 grd <- GerminaR::ger_summary(SeedN = "SNum", evalName = "SGR.", data = grm) %>% 
   select(IBTH, SNum, GRP, MGT, UNC, SYN )
@@ -129,7 +139,7 @@ mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
 
 plot1 <- GerminaR::fplot(data = mc, type = "bar",
                            x = "IBTH", xlab = "",
-                           y = "mean", ylab = "Germination ('%')",
+                           y = "mean", ylab = "Germinability ('%')",
                            z = "IBTH", lgd = "none", 
                            erb = T, sig = "sg", 
                            lmt = c(0,100), brk = 10,
@@ -139,6 +149,8 @@ plot1 <- GerminaR::fplot(data = mc, type = "bar",
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
 
+# summary(av)
+# mc %>% arrange(sg)
 
 av <- aov(MGT ~ IBTH, grd)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
@@ -154,6 +166,9 @@ plot2 <- GerminaR::fplot(data = mc, type = "bar",
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
+
+# summary(av)
+# mc %>% arrange(sg)
 
 
 av <- aov(SYN ~ IBTH, grd)
@@ -211,7 +226,10 @@ grc <- grd %>% select(-SNum) %>%
 
 wvr <- var %>% select(-Block) %>% 
   group_by(IBTH) %>% 
-  summarise_all(funs(mean), na.rm = TRUE)
+  summarise_all(funs(mean), na.rm = TRUE) %>% 
+  mutate(HPT= replace(HPT, IBTH== 0, NA))
+  
+  
 
 
 cmt <- full_join(grc, wvr) %>% mutate(IBTH = as.numeric(IBTH))
