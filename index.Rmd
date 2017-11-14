@@ -1,7 +1,7 @@
 ---
 title: "Germination behaviour of *Jatropha curcas* L. after diffrent imbibition times"
 author: 'Lozano-Isla, Flavio^1^, Miranda, P.V.V.C^1^, Pompelli, M.F.^1^*'
-description: Research paper for analisys of _J. curcas_ under diffrente imbibition times
+description: Research paper for analisys of _J. curcas_ under different imbibition times
 date: '`r Sys.Date()`'
 url: https\://flavjack.github.io/20150607PE/
 github-repo: flavjack/20150607PE
