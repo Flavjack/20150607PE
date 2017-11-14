@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3563550402",
+    "hash" : "3589807374",
     "id" : "6512D5A4",
-    "lastKnownWriteTime" : 1510549296,
-    "last_content_update" : 1510549296830,
+    "lastKnownWriteTime" : 1510624227,
+    "last_content_update" : 1510624227643,
     "path" : "~/GitHub/20150607PE/Result.Rmd",
     "project_path" : "Result.Rmd",
     "properties" : {
-        "cursorPosition" : "15,236",
-        "scrollLine" : "5"
+        "cursorPosition" : "18,524",
+        "scrollLine" : "9"
     },
     "relative_order" : 4,
     "source_on_save" : false,

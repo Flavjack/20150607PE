@@ -170,7 +170,6 @@ plot2 <- GerminaR::fplot(data = mc, type = "bar",
 # summary(av)
 # mc %>% arrange(sg)
 
-
 av <- aov(SYN ~ IBTH, grd)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
 plot3 <- GerminaR::fplot(data = mc, type = "bar",
@@ -185,6 +184,8 @@ plot3 <- GerminaR::fplot(data = mc, type = "bar",
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
 
+# summary(av)
+# mc %>% arrange(sg)
 
 av <- aov(UNC ~ IBTH, grd)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
@@ -195,6 +196,9 @@ plot4 <- GerminaR::fplot(data = mc, type = "bar",
                            erb = T, sig = "sg", 
                            lmt = c(0,2.9),brk = 0.5,
                            color = F)
+
+# summary(av)
+# mc %>% arrange(sg)
 
 ## Plot figures
 
@@ -217,7 +221,7 @@ knitr::include_graphics("img/fig_02.png")
 ```
 
 
-```{r correlation, echo=FALSE, fig.cap='Pearson correlation (p < 0.05) matrix in *Jatropha curcas* seeds after different imbition times. Where: IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; pH, potential of hydrogen; EC, electrical conducntivity; SWC, seed water content; SMT, seed moisture.'}
+```{r correlation, echo=FALSE, fig.cap='Pearson correlation (p < 0.05) matrix in *Jatropha curcas* seeds after different imbition times. Where: IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; pH, potential of hydrogen; EC, electrical conducntivity; SWC, seed water content; SMT, seed moisture.', include=FALSE}
 
 grc <- grd %>% select(-SNum) %>% 
   group_by(IBTH) %>% 
@@ -248,6 +252,13 @@ knitr::include_graphics("img/fig_03.png")
 ```{r pca, fig.cap= "Principal Component Analysis from the variables in *Jatropha curcas* seeds after different imbition times. Where: IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; pH, potential of hydrogen; EC, electrical conducntivity; SWC, seed water content; SMT, seed moisture."}
 
 pca <- PCA(cmt, graph = F, scale.unit = TRUE, quanti.sup = 1)
+
+# sink("pca.txt")
+# summary(pca, nbelements = Inf)
+# cat("\n")
+# cat("\n")
+# dimdesc(pca)
+# sink()
 
 ppi <- 300
 png("img/fig_04.png", width=8*ppi, height=8*ppi, res=ppi)
