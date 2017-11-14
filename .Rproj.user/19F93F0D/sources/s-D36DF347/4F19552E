@@ -5,14 +5,14 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "3435405445",
     "id" : "4F19552E",
-    "lastKnownWriteTime" : 1509201405,
-    "last_content_update" : 1509201405356,
+    "lastKnownWriteTime" : 1510629371,
+    "last_content_update" : 1510629371986,
     "path" : "~/GitHub/20150607PE/intro.Rmd",
     "project_path" : "intro.Rmd",
     "properties" : {
-        "cursorPosition" : "6,94",
+        "cursorPosition" : "4,227",
         "scrollLine" : "0"
     },
     "relative_order" : 2,

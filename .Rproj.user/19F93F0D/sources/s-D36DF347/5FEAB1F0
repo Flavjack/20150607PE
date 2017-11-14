@@ -5,13 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3586427286",
+    "hash" : "2089518059",
     "id" : "5FEAB1F0",
-    "lastKnownWriteTime" : 1498369270,
-    "last_content_update" : 1498369270671,
+    "lastKnownWriteTime" : 1510629491,
+    "last_content_update" : 1510629491834,
     "path" : "~/GitHub/20150607PE/Discussion.Rmd",
     "project_path" : "Discussion.Rmd",
     "properties" : {
+        "cursorPosition" : "4,2865",
+        "scrollLine" : "5",
         "tempName" : "Untitled1"
     },
     "relative_order" : 6,
