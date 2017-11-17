@@ -1,0 +1,19 @@
+# Results
+
+## Electrical conductivity and pH
+
+The water solution from the soaked seeds show variation under the imbibition time  for electrical conductivity (EC) and pH, Figure \@ref(fig:swr) A-B. The pH  range had a variation from 7.7 to 5.13 showing difference between the different imbibition time with a reduction of the pH in the time (r = -0.88, p<0.05), Figure \@ref(fig:swr)  A. While the EC show a increase in relation to imbibition time (r = 0.80, p<0.05) with value ranges from 0.021 to 0.69 ds.m^−1^, Figure \@ref(fig:swr) B. According the correlation analysis exits a negative correlation between EC and pH (r = -0.74, p<0.05).
+
+## Seed water relation
+
+The seed moisture was 7.93% at the begging of the experiment and during the time line it arrive until 9.50% , Figure \@ref(fig:swr) C. The seed moisture show a strong positive correlation with the imbibition time (r = 0.89, p<0.05). While the seed water content show a fast increase until the first two hour of imbibition the seed arrives to 25.67% of water content, afterwards these moment the water content in the seeds increase continuously to arrive around 59.23% in 24 hours, Figure \@ref(fig:swr) D. There was an increase in the water content around 6.5 times from initial moisture it is represented for a high correlation between imbibition time with the water content (r = 0.93, p<0.05). While the correlation between both variables is 0.96 (p<0.05). 
+
+
+## Seed germination analisys
+
+Germinability of the seeds of *Jatropha curcas* had a significant decrease since the 2 hours of imbibition with a initial germinability of 85% for seed without imbibition treatment at 00 hours. After that the range of germinability were between 68 to 44% from 02 to 24 hour of imbibition (Figure \@ref(fig:grm) A). Germinability show a strong negative correlation with imbibition time (r = −0.72, p<0.05). The mean germination time in seed without imbibiton has a major value with 4.8 day in comparative with the other treatment with values around 5.89 to 7.06 day for germination between 02 to 24 hours of imbibition (Figure \@ref(fig:grm) B). Seed germinability presented a negative strong correlation with a mean germination time (r = −0.88, p<0.05). The germination synchrony show values from 1.86 to 2.34 without  difference between the imbibition times (Figure \@ref(fig:grm) C). The maximum value for the uncertainty in germination for the experiment was 4.64 bits an the results don't show any trend according the imbibition time. The germination uncertainty had values from 1.86 to 2.34 bits. The germination synchrony show a high correlation with the germination uncertainty (r = −0.92, p<0.05).
+
+
+## Multivariate analisys
+
+The principal component analysis according to the studied variables explain 75.03% of the variance between the first and second dimension. In the first dimension exist high positive correlation between ELC (r = 0.97, p<0.05), SWC (r = 0.96, p<0.05), SMT (r = 0.91, p<0.05), STW (r = 0.91, p<0.05), IBTH (r = 0.87, p<0.05), MGT (r = 0.82, p<0.05) with a negative correlation with the GRP (r = -0.92, p<0.05) while in the second dimension SFW (r = 0.77, p<0.05), SDW (r = 0.71, p<0.05) present positive correlation in contrast with HPT (r = -0.75, p<0.05) with negative correlation.

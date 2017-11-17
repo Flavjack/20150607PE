@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1498361139145.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1801681049",
+    "id" : "4F19552E",
+    "lastKnownWriteTime" : 1510665176,
+    "last_content_update" : 1510665176164,
+    "path" : "~/GitHub/20150607PE/intro.Rmd",
+    "project_path" : "intro.Rmd",
+    "properties" : {
+        "cursorPosition" : "10,166",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

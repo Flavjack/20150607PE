@@ -239,13 +239,13 @@ wvr <- var %>% select(-Block) %>%
 cmt <- full_join(grc, wvr) %>% mutate(IBTH = as.numeric(IBTH))
 
 ppi <- 300
-png("img/fig_03.png", width=8*ppi, height=8*ppi, res=ppi)
+png("img/fig_correlation.png", width=8*ppi, height=8*ppi, res=ppi)
 
 fieldbook::plot_correlation(cmt,method = "pearson")
 
 graphics.off()
 
-knitr::include_graphics("img/fig_03.png")
+knitr::include_graphics("img/fig_correlation.png")
 
 ```
 
@@ -261,7 +261,7 @@ pca <- PCA(cmt, graph = F, scale.unit = TRUE, quanti.sup = 1)
 # sink()
 
 ppi <- 300
-png("img/fig_04.png", width=8*ppi, height=8*ppi, res=ppi)
+png("img/fig_03.png", width=8*ppi, height=8*ppi, res=ppi)
 
 # fieldbook::plot_PCA(cmt, type = "biplot")
 
@@ -271,7 +271,7 @@ plot.PCA(pca,choix="var",
 
 graphics.off()
 
-knitr::include_graphics("img/fig_04.png")
+knitr::include_graphics("img/fig_03.png")
 
 ```
 

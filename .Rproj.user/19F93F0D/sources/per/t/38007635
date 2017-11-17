@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1498361143764.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "859425656",
+    "id" : "38007635",
+    "lastKnownWriteTime" : 1510959981,
+    "last_content_update" : 1510959981525,
+    "path" : "~/GitHub/20150607PE/code.Rmd",
+    "project_path" : "code.Rmd",
+    "properties" : {
+        "chunk_output_type" : "console",
+        "cursorPosition" : "241,24",
+        "scrollLine" : "222"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

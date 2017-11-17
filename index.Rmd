@@ -1,5 +1,5 @@
 ---
-title: "Germination behaviour of *Jatropha curcas* L. after diffrent imbibition times"
+title: "Germination behavior of *Jatropha curcas* L. after diffrent imbibition times"
 author: 'Lozano-Isla, Flavio^1^, Miranda, P.V.V.C^1^, Pompelli, M.F.^1^*'
 description: Research paper for analisys of _J. curcas_ under different imbibition times
 date: '`r Sys.Date()`'
