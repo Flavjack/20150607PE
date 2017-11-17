@@ -22,6 +22,7 @@ csl: apa.csl
 # http://search.crossref.org/
 ---
 
+<!-- Journal of Seed Science revista para formato -->
 
 ```{r setup, include=FALSE}
 
