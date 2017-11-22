@@ -44,14 +44,23 @@ plot1 <- GerminaR::fplot(data = mc, type = "line",
                            x = "IBTH", xlab = "",
                            y = "mean", ylab = "pH",
                            z = "IBTH", lgd = "none", 
-                           erb = T, sig = "sg", 
+                           erb = T, 
                            lmt = c(5,8.4), brk = 0.5, 
                            color = F)  + 
+  
   geom_line(aes(group=1))  +
   geom_point(shape = 1, colour = "black", fill = "white", size = 1, stroke = 0.5)+
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
-        axis.ticks.x=element_blank())
+        axis.ticks.x=element_blank()) +
+  
+          geom_text(aes_string(label = "sg", y = "ymax"), 
+          colour = "black", size = 2 * 1, 
+          vjust = -0.7, hjust = 1, 
+          angle = 0, position = position_dodge(0.9))
+  
+
+
 
 
 av <- aov(ELC ~ IBTH, var)
@@ -64,14 +73,20 @@ plot2 <- GerminaR::fplot(data = mc, type = "line",
                            x = "IBTH", xlab = "",
                            y = "mean", ylab = "Electrical conductivity (dS.m^{-1})",
                            z = "IBTH", lgd = "none", 
-                           erb = T, sig = "sg", 
+                           erb = T, 
                            lmt = c(0,0.85), 
                            color = F)  + 
   geom_line(aes(group=1))  +
   geom_point(shape = 1, colour = "black", fill = "white", size = 1, stroke = 0.5)+
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
-        axis.ticks.x=element_blank())
+        axis.ticks.x=element_blank())+
+  
+          geom_text(aes_string(label = "sg", y = "ymax"), 
+          colour = "black", size = 2 * 1, 
+          vjust = -0.7, hjust = 1, 
+          angle = 0, position = position_dodge(0.9))
+
 
 
 av <- aov(SMT ~ IBTH, var)
@@ -81,14 +96,20 @@ plot3 <- GerminaR::fplot(data = mc, type = "line",
                            x = "IBTH", xlab = "",
                            y = "mean", ylab = "Seed moisture ('%')",
                            z = "IBTH", lgd = "none", 
-                           erb = T, sig = "sg", 
+                           erb = T, 
                            lmt = c(7.5,9.9), brk = 0.5, 
-                           color = F)+ 
+                           color = F)+
+  
   geom_line(aes(group=1))  +
   geom_point(shape = 1, colour = "black", fill = "white", size = 1, stroke = 0.5)+
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
-        axis.ticks.x=element_blank())
+        axis.ticks.x=element_blank()) +
+  
+          geom_text(aes_string(label = "sg", y = "ymax"), 
+          colour = "black", size = 2 * 1, 
+          vjust = -0.7, hjust = 1, 
+          angle = 0, position = position_dodge(0.9))
 
 # summary(av)
 # mc %>% arrange(sg)
@@ -100,11 +121,17 @@ plot4 <- GerminaR::fplot(data = mc, type = "line",
                            x = "IBTH", xlab = "Imbibition time (hours)",
                            y = "mean", ylab = "Seed water content ('%')",
                            z = "IBTH", lgd = "none", 
-                           erb = T, sig = "sg", 
+                           erb = T,  
                            lmt = c(0,69), brk = 10, 
                            color = F)+ 
   geom_line(aes(group=1))  +
-  geom_point(shape = 1, colour = "black", fill = "white", size = 1, stroke = 0.5)
+  geom_point(shape = 1, colour = "black", fill = "white", size = 1, stroke = 0.5) +
+  
+          geom_text(aes_string(label = "sg", y = "ymax"), 
+          colour = "black", size = 2 * 1, 
+          vjust = -0.7, hjust = 1, 
+          angle = 0, position = position_dodge(0.9))
+
 
 # summary(av)
 # mc %>% arrange(sg)
@@ -122,11 +149,11 @@ swr <- ggdraw(xlim = c(0, 0.55), ylim = c(0, 0.95))+
             y = c(0.25, 0.48, 0.71, 0.939))
 
 cowplot::ggsave("img/fig_01.png", dpi= 300, width = 210*0.45 , height = 297*0.9, units = "mm")
+cowplot::ggsave("img/fig_01.tiff", dpi= 300, width = 210*0.45 , height = 297*0.9, units = "mm")
 
 knitr::include_graphics("img/fig_01.png")
 
 ```
-
 
 
 ```{r grm, fig.cap='(A) Germination (%); (B) Mean germination time (days); (C) Germination synchrony and (D) Germination uncertany (bits) in *Jatropha curcas* seeds after different imbition times. The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4.'}
@@ -190,7 +217,7 @@ plot3 <- GerminaR::fplot(data = mc, type = "bar",
 av <- aov(UNC ~ IBTH, grd)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
 plot4 <- GerminaR::fplot(data = mc, type = "bar",
-                           x = "IBTH", xlab = "",
+                           x = "IBTH", xlab = "Imbibition time (hours)",
                            y = "mean", ylab = "Germination uncertany (bits)",
                            z = "IBTH", lgd = "none", 
                            erb = T, sig = "sg", 
@@ -214,6 +241,7 @@ grv <- ggdraw(xlim = c(0, 0.55), ylim = c(0, 0.95))+
 
 
 cowplot::ggsave("img/fig_02.png", dpi= 300, width = 210*0.45 , height = 297*0.9, units = "mm")
+cowplot::ggsave("img/fig_02.tiff", dpi= 300, width = 210*0.45 , height = 297*0.9, units = "mm")
 
 knitr::include_graphics("img/fig_02.png")
 
@@ -245,11 +273,21 @@ fieldbook::plot_correlation(cmt,method = "pearson")
 
 graphics.off()
 
+
+cmt <- full_join(grc, wvr) %>% mutate(IBTH = as.numeric(IBTH))
+
+ppi <- 300
+png("img/fig_correlation.tiff", width=8*ppi, height=8*ppi, res=ppi)
+
+fieldbook::plot_correlation(cmt,method = "pearson")
+
+graphics.off()
+
 knitr::include_graphics("img/fig_correlation.png")
 
 ```
 
-```{r pca, fig.cap= "Principal Component Analysis from the variables in *Jatropha curcas* seeds after different imbition times. Where: IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; pH, potential of hydrogen; EC, electrical conducntivity; SWC, seed water content; SMT, seed moisture."}
+```{r pca, fig.cap= "Principal Component Analysis from the variables in *Jatropha curcas* seeds after different imbition times. Where: IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; pH, potential of hydrogen; EC, electrical conducntivity; SWC, seed water content; SMT, seed moisture; SDW, seed dry weight; SFW, seed fresh weight; STW, seed turgid weight."}
 
 pca <- PCA(cmt, graph = F, scale.unit = TRUE, quanti.sup = 1)
 
@@ -266,6 +304,18 @@ png("img/fig_03.png", width=8*ppi, height=8*ppi, res=ppi)
 # fieldbook::plot_PCA(cmt, type = "biplot")
 
 plot.PCA(pca,choix="var",
+         title="Principal Component Analisys",
+         autoLab = "y", cex = 0.8, shadowtext = T)
+
+graphics.off()
+
+
+ppi <- 300
+png("img/fig_03.tiff", width=8*ppi, height=8*ppi, res=ppi)
+
+# fieldbook::plot_PCA(cmt, type = "biplot")
+
+plot.PCA(pca,choix="var", col.quanti.sup = "black",
          title="Principal Component Analisys",
          autoLab = "y", cex = 0.8, shadowtext = T)
 
