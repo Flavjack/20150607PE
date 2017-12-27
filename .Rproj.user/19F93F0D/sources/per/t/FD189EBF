@@ -5,17 +5,17 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "1030015079",
     "id" : "FD189EBF",
-    "lastKnownWriteTime" : 1511322976,
-    "last_content_update" : 1511322976324,
+    "lastKnownWriteTime" : 1514354709,
+    "last_content_update" : 1514354709361,
     "path" : "~/GitHub/20150607PE/conclusion.Rmd",
     "project_path" : "conclusion.Rmd",
     "properties" : {
-        "cursorPosition" : "6,107",
+        "cursorPosition" : "2,285",
         "scrollLine" : "0"
     },
-    "relative_order" : 7,
+    "relative_order" : 8,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_markdown"
