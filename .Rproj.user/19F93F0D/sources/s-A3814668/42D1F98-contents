@@ -710,16 +710,5 @@
   publisher={JSTOR}
 }
 
-@article{Alencar_2015,
-	doi = {10.1071/fp15019},
-	url = {https://doi.org/10.1071%2Ffp15019},
-	year = 2015,
-	publisher = {{CSIRO} Publishing},
-	volume = {42},
-	number = {9},
-	pages = {865},
-	author = {Nara L. M. Alencar and Cibelle G. Gadelha and Maria I. Gall�o and Mary A. H. Dolder and Jos� T. Prisco and En�as Gomes-Filho},
-	title = {Ultrastructural and biochemical changes induced by salt stress in Jatropha curcas seeds during germination and seedling development},
-	journal = {Functional Plant Biology}
-}
+
 
