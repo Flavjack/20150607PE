@@ -32,7 +32,7 @@ grm <- fb %>% gs_read(ws = "fb") %>%
 
 ## Figures
 
-```{r swr, fig.cap= "Response of *Jatropha curcas* seeds after different imbition time. (A) pH; (B) Electrical conductivity; (C) Seed moisture and  (D) Seed water content. The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4."}
+```{r swr, fig.cap= "Response of *Jatropha curcas* seeds after different imbibition time. (A) pH; (B) Electrical conductivity; (C) Seed moisture and  (D) Seed water content. The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4."}
 
 av <- aov(HPT ~ IBTH, var)
 mc <- GerminaR::ger_testcomp(aov = av, comp = "IBTH", type = "snk")
@@ -156,7 +156,7 @@ knitr::include_graphics("img/fig_01.png")
 ```
 
 
-```{r grm, fig.cap='Germination response in *Jatropha curcas* seeds after different imbition times. (A) Germination (%); (B) Mean germination time (days); (C) Germination synchrony and (D) Germination uncertany (bits).  The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4.'}
+```{r grm, fig.cap='Germination response in *Jatropha curcas* seeds after different imbibition times. (A) Germination (%); (B) Mean germination time (days); (C) Germination synchrony and (D) Germination uncertainty (bits).  The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4.'}
 
 grd <- GerminaR::ger_summary(SeedN = "SNum", evalName = "SGR.", data = grm) %>% 
   select(IBTH, SNum, GRP, MGT, UNC, SYN )
@@ -249,7 +249,7 @@ knitr::include_graphics("img/fig_02.png")
 ```
 
 
-```{r correlation, echo=FALSE, fig.cap='Pearson correlation (p < 0.05) matrix in *Jatropha curcas* seeds after different imbition times. Where: Dim, dimension IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; pH, potential of hydrogen; EC, electrical conducntivity; SWC, seed water content; SMT, seed moisture.', include=FALSE}
+```{r correlation, echo=FALSE, fig.cap='Pearson correlation (p < 0.05) matrix in *Jatropha curcas* seeds after different imbibition times. Where: Dim, dimension IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; pH, potential of hydrogen; EC, electrical conductivity; SWC, seed water content; SMT, seed moisture.', include=FALSE}
 
 grc <- grd %>% select(-SNum) %>% 
   group_by(IBTH) %>% 
@@ -287,7 +287,7 @@ knitr::include_graphics("img/fig_correlation.png")
 
 ```
 
-```{r pca, fig.cap= "Principal Component Analysis from the variables in *Jatropha curcas* seeds after different imbition times. Where: IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; pH, potential of hydrogen; EC, electrical conducntivity; SWC, seed water content; SMT, seed moisture; SDW, seed dry weight; SFW, seed fresh weight; STW, seed turgid weight."}
+```{r pca, fig.cap= "Principal Component Analysis from the variables in *Jatropha curcas* seeds after different imbibition times. Where: IBTH, imbibition time; GRP, germination percentage; MGT, mean germination time; SYN, germination synchrony; UNC, germination uncertainty; pH, potential of hydrogen; EC, electrical conductivity; SWC, seed water content; SMT, seed moisture; SDW, seed dry weight; SFW, seed fresh weight; STW, seed turgid weight."}
 
 pca <- PCA(cmt, graph = F, scale.unit = TRUE, quanti.sup = 1)
 
