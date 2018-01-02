@@ -1,4 +1,4 @@
-## Peruvian Journal of Agronomy {-}
+## Peruvian Journal of Agronomy
 
 **Germination behavior of *Jatropha curcas* L. after different imbibition times**
 

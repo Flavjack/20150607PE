@@ -1,4 +1,4 @@
-# Figures & tables
+# Figures {-}
 
 ```{r fb, include=FALSE, echo=FALSE}
 
@@ -29,8 +29,6 @@ grm <- fb %>% gs_read(ws = "fb") %>%
   
 ```
 
-
-## Figures
 
 ```{r swr, fig.cap= "Response of *Jatropha curcas* seeds after different imbibition time. (A) pH; (B) Electrical conductivity; (C) Seed moisture and  (D) Seed water content. The letter represent the mean difference with Student-Newman-Keuls test (p ≤ 0.05). Means are represent with (±SE). n = 4."}
 
