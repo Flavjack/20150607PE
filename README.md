@@ -11,3 +11,5 @@ Lozano-Isla, Flavio; Miranda, Pedro Vitor; Pompelli, Marcelo
 **Palabras clave:** biofuel, seed water content, seed moisture, germinability
 
 **DOI.:** http://dx.doi.org/10.21704/pja.v1i1.1065
+
+**Rticle.:** https://flavjack.github.io/20150607PE/
