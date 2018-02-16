@@ -6,7 +6,7 @@ date: '`r Sys.Date()`'
 url: https\://flavjack.github.io/20150607PE/
 github-repo: flavjack/20150607PE
 cover-image: img/cover.jpg
-favicon: img/favicon.ico
+favicon: img/icon.png
 #
 site: bookdown::bookdown_site
 documentclass: book
